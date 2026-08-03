@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohanarajah Vythursh | Portfolio</title>
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for professional typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Base & Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #171f2e; 
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* --- Top Horizontal Navigation --- */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: flex-end; /* Aligns links to the right like image_f0083a.png */
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #94a3b8; /* Dimmer color for unselected pages */
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            padding-bottom: 5px;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+        }
+
+        /* Active Page Highlight */
+        .nav-link.active {
+            color: #4ade80; /* Highlighted color */
+            border-bottom: 2px solid #4ade80;
+        }
+
+        /* --- Main Layout Grid (Now 2 Columns) --- */
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            width: 100%;
+            max-width: 1400px;
+            padding: 6rem 5% 2rem; /* Top padding added so it doesn't overlap with navbar */
+            align-items: center;
+        }
+
+        /* --- Left Column: Summary & Contact --- */
+        .left-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .summary-box h2 {
+            font-size: 1.3rem;
+            color: #38bdf8; 
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+        }
+
+        .summary-box p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            text-decoration: none;
+            color: #f8fafc;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+
+        .icon-circle {
+            width: 45px;
+            height: 45px;
+            background: rgba(56, 189, 248, 0.05);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .contact-item:hover .icon-circle {
+            background: #38bdf8;
+            color: #0f172a;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+        }
+
+        .contact-item:hover span {
+            color: #38bdf8;
+        }
+
+        /* --- Right Column: Name & Photo --- */
+        .right-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Highly highlighted name */
+        .right-col h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            line-height: 1.3;
+            margin-bottom: 2.5rem;
+            color: #7dd3fc;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.4); 
+        }
+
+        /* Lightning / Glowing Rotating Border Effect */
+        .photo-wrapper {
+            position: relative;
+            width: 320px;
+            height: 450px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .photo-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: conic-gradient(transparent, transparent, transparent, #38bdf8);
+            animation: rotateLightning 3s linear infinite;
+        }
+
+        .photo-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 3px; 
+            background: #2a3441; 
+            border-radius: 17px;
+        }
+
+        @keyframes rotateLightning {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-photo {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            border-radius: 17px;
+            object-fit: cover;
+            background: #334155; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .portfolio-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding-top: 8rem;
+            }
+            header {
+                justify-content: center;
+                background: #171f2e; /* Solid background on mobile so links are readable */
+            }
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Layer -->
+    <header>
+        <nav>
+            <a href="index.html" class="nav-link active">About Me</a>
+            <a href="education.html" class="nav-link">Education</a>
+            <a href="experience.html" class="nav-link">Experience</a>
+            <a href="certificates.html" class="nav-link">Professional Certificates</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="learning.html" class="nav-link">Online Learning</a>
+        </nav>
+    </header>
+
+    <div class="portfolio-container">
+        
+        <!-- Left Column -->
+        <div class="left-col">
+            <div class="summary-box">
+                <h2>Professional Summary</h2>
+                <p>I am a multidisciplinary engineer bridging the gap between hardware systems and modern software infrastructure. With a BSc in Electronics & Telecommunication and currently pursuing an MSc in Computer Science, I bring a strong analytical background to complex technical challenges. Passionate about DevOps, Cloud architectures, and AI, I am seeking a dynamic role where I can leverage my diverse skill set to build scalable, intelligent, and impactful technological solutions.</p>
+            </div>
+            
+            <div class="contact-links">
+                <a href="mailto:vythursh.mohanarajah@gmail.com" class="contact-item">
+                    <div class="icon-circle"><i class="fa-solid fa-envelope"></i></div>
+                    <span>vythursh.mohanarajah@gmail.com</span>
+                </a>
+                <a href="tel:+9477228248" class="contact-item">
+                    <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
+                    <span>+94 77 228 248</span>
+                </a>
+                <a href="http://www.linkedin.com/in/mohanarajah-vythursh-b16841152" target="_blank" class="contact-item">
+                    <div class="icon-circle"><i class="fa-brands fa-linkedin-in"></i></div>
+                    <span>http://www.linkedin.com/in/mohanarajah-vythursh-b16841152</span>
+                </a>
+                <a href="https://github.com/Vythursh1998" target="_blank" class="contact-item">
+                    <div class="icon-circle"><i class="fa-brands fa-github"></i></div>
+                    <span>https://github.com/Vythursh1998</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Column (Formerly Center) -->
+        <div class="right-col">
+            <h1>MOHANARAJAH<br>VYTHURSH</h1>
+            <div class="photo-wrapper">
+                <img src="Profile.JPG" alt="Photo of Mine" class="profile-photo">
+                
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
