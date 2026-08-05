@@ -19,7 +19,6 @@
 
         body {
             background-color: #0f172a; 
-            /* Using the requested background image with a dark overlay */
             background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95)), url('certificates-bg.png') no-repeat center center fixed;
             background-size: cover;
             color: #f8fafc;
@@ -187,6 +186,68 @@
             grid-template-rows: 1fr;
         }
 
+        /* Certificate / Badge Styling */
+        .cert-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .cert-badge-img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cert-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            flex: 1;
+        }
+
+        .cert-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #f8fafc;
+        }
+
+        .cert-issuer {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .cert-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 5px;
+            font-size: 0.85rem;
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .cert-link:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
         .empty-state {
             color: #94a3b8;
             font-style: italic;
@@ -202,13 +263,14 @@
         @media (max-width: 1024px) {
             header { justify-content: center; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); }
             nav { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+            .cert-card { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="nav-link">About Me</a>
+            <a href="about.html" class="nav-link">About Me</a>
             <a href="education.html" class="nav-link">Education</a>
             <a href="experience.html" class="nav-link">Experience</a>
             <a href="certificates.html" class="nav-link">Professional Certificates</a>
@@ -223,7 +285,8 @@
 
         <div class="accordion-container">
 
-            <div class="acc-item open"> <!-- Default open -->
+            <!-- DevOps Category -->
+            <div class="acc-item">
                 <button class="acc-header">
                     <div class="header-title-wrap">
                         <i class="fa-solid fa-infinity"></i> DevOps
@@ -242,7 +305,8 @@
                 </div>
             </div>
 
-            <div class="acc-item">
+            <!-- Cloud Computing Category (Populated with Certificate & Badge structure) -->
+            <div class="acc-item open"> <!-- Default open -->
                 <button class="acc-header">
                     <div class="header-title-wrap">
                         <i class="fa-solid fa-cloud"></i> Cloud Computing
@@ -252,15 +316,105 @@
                 <div class="acc-content-wrapper">
                     <div class="acc-content-inner">
                         <div class="acc-content-padding">
-                            <div class="empty-state">
-                                <i class="fa-solid fa-server" style="font-size: 1.5rem; margin-bottom: 12px; display: block; color: #475569;"></i>
-                                Cloud computing courses will be added here...
+                            
+                            <!-- Certificate Card 1 -->
+                            <div class="cert-card">
+                                <img src="Certificates\Learning\Cloud\AWS\AWS Academy Cloud Developing [176120]\Badge.png" alt="Badge" class="cert-badge-img">
+                                <div class="cert-info">
+                                    <div class="cert-title">AWS Academy Cloud Developing [176120]</div>
+                                    <div class="cert-issuer">Amazon Web Services (AWS) • Issued 07/31/2026</div>
+                                    <a href="Certificates\Learning\Cloud\AWS\AWS Academy Cloud Developing [176120]\Certificate.pdf" target="_blank" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+                                </div>
                             </div>
+
+                            <!-- Certificate Card 2 -->
+                            <div class="cert-card">
+                                <img src="Certificates\Learning\Cloud\AWS\AWS Academy Cloud Architecting [176127]\Badge.png" alt="Badge" class="cert-badge-img">
+                                <div class="cert-info">
+                                    <div class="cert-title">AWS Academy Cloud Architecting [176127]</div>
+                                    <div class="cert-issuer">Amazon Web Services (AWS) • Issued 07/24/2026</div>
+                                    <a href="Certificates\Learning\Cloud\AWS\AWS Academy Cloud Architecting [176127]\Certificate.pdf" target="_blank" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+                                </div>
+                            </div>
+
+                            <!-- Certificate Card 3 -->
+                            <div class="cert-card">
+                                <img src="Certificates\Learning\Cloud\AWS\AWS Academy Cloud Security Foundations [176124]\Badge.png" alt="Badge" class="cert-badge-img">
+                                <div class="cert-info">
+                                    <div class="cert-title">AWS Academy Cloud Security Foundations [176124]</div>
+                                    <div class="cert-issuer">Amazon Web Services (AWS) • Issued 07/03/2026</div>
+                                    <a href="Certificates\Learning\Cloud\AWS\AWS Academy Cloud Security Foundations [176124]\Certificate.pdf" target="_blank" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+                                </div>
+                            </div>
+
+                            <!-- Certificate Card 4 -->
+                            <div class="cert-card">
+                                <img src="Certificates\Learning\Cloud\AWS\AWS Academy Machine Learning Foundations [137510]\Badge.png" alt="Badge" class="cert-badge-img">
+                                <div class="cert-info">
+                                    <div class="cert-title">AWS Academy Machine Learning Foundations [137510]</div>
+                                    <div class="cert-issuer">Amazon Web Services (AWS) • Issued 06/01/2026</div>
+                                    <a href="Certificates\Learning\Cloud\AWS\AWS Academy Machine Learning Foundations [137510]\Certificate.pdf" target="_blank" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+                                </div>
+                            </div>
+
+                            <!-- Certificate Card 5 -->
+                            <div class="cert-card">
+                                <img src="Certificates\Learning\Cloud\AWS\AWS Academy Lab Project - Cloud Security Builder [142624]\Badge.png" alt="Badge" class="cert-badge-img">
+                                <div class="cert-info">
+                                    <div class="cert-title">AWS Academy Lab Project - Cloud Security Builder [142624]</div>
+                                    <div class="cert-issuer">Amazon Web Services (AWS) • Issued 06/01/2026</div>
+                                    <a href="Certificates\Learning\Cloud\AWS\AWS Academy Lab Project - Cloud Security Builder [142624]\Certificate.pdf" target="_blank" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+                                </div>
+                            </div>
+
+                            <!-- Certificate Card 6 -->
+                            <div class="cert-card">
+                                <img src="Certificates/Learning/Cloud/AWS/AWS Academy Data Engineering [137508]/Badge.png" alt="Badge" class="cert-badge-img">
+                                <div class="cert-info">
+                                    <div class="cert-title">AWS Academy Data Engineering [137508]</div>
+                                    <div class="cert-issuer">Amazon Web Services (AWS) • Issued 06/01/2026</div>
+                                    <a href="Certificates/Learning/Cloud/AWS/AWS Academy Data Engineering [137508]/Certificate.pdf" target="_blank" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+                                </div>
+                            </div>
+
+                            <!-- Certificate Card 7 -->
+                            <div class="cert-card">
+                                <img src="Certificates\Learning\Cloud\AWS\AWS Academy Cloud Operations [137504]\Badge.png" alt="Badge" class="cert-badge-img">
+                                <div class="cert-info">
+                                    <div class="cert-title">AWS Academy Cloud Operations [137504]</div>
+                                    <div class="cert-issuer">Amazon Web Services (AWS) • Issued 06/01/2026</div>
+                                    <a href="Certificates\Learning\Cloud\AWS\AWS Academy Cloud Operations [137504]\Certificate.pdf" target="_blank" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+                                </div>
+                            </div>
+
+                            <!-- Certificate Card 8 -->
+                            <div class="cert-card">
+                                <img src="Certificates\Learning\Cloud\AWS\AWS Academy Cloud Foundations [176126]\Badge.png" alt="Badge" class="cert-badge-img">
+                                <div class="cert-info">
+                                    <div class="cert-title">AWS Academy Cloud Foundations [176126]</div>
+                                    <div class="cert-issuer">Amazon Web Services (AWS) • Issued 09/25/2025</div>
+                                    <a href="Certificates\Learning\Cloud\AWS\AWS Academy Cloud Foundations [176126]\Certificate.pdf" target="_blank" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+                                </div>
+                            </div>
+
+                            <!-- Certificate Card 9 -->
+                            <div class="cert-card">
+                                <img src="Certificates\Learning\Cloud\AWS\AWS Academy Lab Project - Microservices and CICD Pipeline Builder [118497]\Badge.png" alt="Badge" class="cert-badge-img">
+                                <div class="cert-info">
+                                    <div class="cert-title">AWS Academy Lab Project - Microservices and CICD Pipeline Builder [118497]</div>
+                                    <div class="cert-issuer">Amazon Web Services (AWS) • Issued 09/24/2025</div>
+                                    <a href="Certificates\Learning\Cloud\AWS\AWS Academy Lab Project - Microservices and CICD Pipeline Builder [118497]\Certificate.pdf" target="_blank" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+                                </div>
+                            </div>
+
+                            
+
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Software Category -->
             <div class="acc-item">
                 <button class="acc-header">
                     <div class="header-title-wrap">
@@ -280,6 +434,7 @@
                 </div>
             </div>
 
+            <!-- Operating Systems Category -->
             <div class="acc-item">
                 <button class="acc-header">
                     <div class="header-title-wrap">
@@ -299,6 +454,7 @@
                 </div>
             </div>
 
+            <!-- Network Category -->
             <div class="acc-item">
                 <button class="acc-header">
                     <div class="header-title-wrap">
@@ -318,6 +474,7 @@
                 </div>
             </div>
 
+            <!-- Others Category -->
             <div class="acc-item">
                 <button class="acc-header">
                     <div class="header-title-wrap">
@@ -349,12 +506,10 @@
                     const parentItem = header.parentElement;
                     const currentlyOpen = document.querySelector('.acc-item.open');
 
-                    // If another main item is open, close it
                     if (currentlyOpen && currentlyOpen !== parentItem) {
                         currentlyOpen.classList.remove('open');
                     }
                     
-                    // Toggle the clicked item
                     parentItem.classList.toggle('open');
                 });
             });
