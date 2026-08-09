@@ -357,6 +357,14 @@
             .project-image { width: 100%; height: auto; max-height: 180px; }
             .tech-chip-container, .entry-actions, .achievement-list li { justify-content: center; text-align: center; }
         }
+
+        /* Mobile Fix: Push content below the taller navigation bar */
+        @media (max-width: 768px) {
+            .page-container {
+                padding-top: 13rem; /* Increases top spacing on mobile so the header doesn't cover the title */
+            }
+        }
+        
     </style>
 </head>
 <body>

@@ -266,6 +266,13 @@
             header { justify-content: center; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); }
             nav { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
         }
+
+        /* Mobile Fix: Push content below the taller navigation bar */
+        @media (max-width: 768px) {
+            .page-container {
+                padding-top: 13rem; /* Increases top spacing on mobile so the header doesn't cover the title */
+            }
+        }
     </style>
 </head>
 <body>

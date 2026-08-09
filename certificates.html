@@ -307,6 +307,14 @@
             .cert-card { flex-direction: column; align-items: flex-start; }
             .badge { align-self: flex-start; }
         }
+
+        /* Mobile Fix: Push content below the taller navigation bar */
+        @media (max-width: 768px) {
+            .page-container {
+                padding-top: 13rem; /* Increases top spacing on mobile so the header doesn't cover the title */
+            }
+        }
+        
     </style>
 </head>
 <body>
