@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Certificates | Mohanarajah Vythursh</title>
+    <title>Projects & Research | Mohanarajah Vythursh</title>
     <!-- FontAwesome for standard icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts for professional typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
+        /* --- Base & Reset --- */
         * {
             margin: 0;
             padding: 0;
@@ -19,7 +20,8 @@
 
         body {
             background-color: #0f172a; 
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95)), url('certificates-bg.png') no-repeat center center fixed;
+            /* Using the requested background image with a dark overlay */
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('projects-bg.png') no-repeat center center fixed;
             background-size: cover;
             color: #f8fafc;
             min-height: 100vh;
@@ -30,6 +32,7 @@
             position: relative;
         }
 
+        /* --- Top Horizontal Navigation --- */
         header {
             position: absolute;
             top: 0;
@@ -61,16 +64,18 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
+        /* Active Page Highlight for Projects */
         .nav-link.active {
             color: #4ade80; 
             border-bottom: 2px solid #4ade80;
         }
 
+        /* --- Main Layout --- */
         .page-container {
             display: flex;
             flex-direction: column;
             width: 100%;
-            max-width: 1000px; /* Matched to Experience page width */
+            max-width: 1400px;
             margin: 0 auto;
             padding: 8rem 5% 5rem;
         }
@@ -85,22 +90,87 @@
             text-align: center;
             text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
         }
-
+        
         .section-subtitle {
             text-align: center;
             color: #94a3b8;
             font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* --- Metrics Dashboard (Dynamic Counters) --- */
+        .metrics-dashboard {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
             margin-bottom: 4rem;
         }
 
+        .metric-card {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem 3rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            border-color: #4ade80;
+            box-shadow: 0 10px 40px rgba(74, 222, 128, 0.15);
+        }
+
+        .metric-card h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #f8fafc;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .metric-card p {
+            color: #38bdf8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* --- 2 Column Grid for Research and Projects --- */
+        .projects-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .column-header {
+            font-size: 1.5rem;
+            color: #e2e8f0;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .column-header i {
+            color: #4ade80;
+        }
+
+        /* --- Accordion Containers --- */
         .accordion-container {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
         .acc-item {
-            background: rgba(15, 23, 42, 0.55);
+            background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -112,17 +182,16 @@
 
         .acc-item:hover {
             border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 10px 40px rgba(56, 189, 248, 0.15);
             transform: translateY(-2px);
         }
 
         .acc-header {
             width: 100%;
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 1.5rem;
             background: transparent;
             border: none;
             color: #f8fafc;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 600;
             text-align: left;
             cursor: pointer;
@@ -142,14 +211,17 @@
             gap: 12px;
         }
 
-        /* Category specific colors for the header icons */
-        .acc-header .fa-cloud { color: #38bdf8; }
-        .acc-header .fa-server { color: #c084fc; }
-        .acc-header .fa-infinity { color: #f472b6; }
+        /* Custom colors for category icons */
+        .cat-devops { color: #f472b6; }
+        .cat-software { color: #4ade80; }
+        .cat-gaming { color: #c084fc; }
+        .cat-iot { color: #facc15; }
+        .cat-other { color: #94a3b8; }
+        .cat-research { color: #38bdf8; }
 
         .acc-header .chevron {
-            color: #38bdf8;
-            font-size: 1.5rem;
+            color: #94a3b8;
+            font-size: 1.2rem;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -165,147 +237,179 @@
         }
         
         .acc-content-padding {
-            padding: 1.5rem 2rem 2.5rem 2rem;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .acc-item.open {
             border-color: #38bdf8;
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.8);
         }
         .acc-item.open .acc-header .chevron {
             transform: rotate(180deg);
+            color: #38bdf8;
         }
         .acc-item.open .acc-content-wrapper {
             grid-template-rows: 1fr;
         }
 
-        .vendor-section {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .vendor-title {
-            font-size: 1.15rem;
-            color: #cbd5e1;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 0.5rem;
-        }
-
-        /* Vendor Icon Colors */
-        .vendor-title .fa-microsoft { color: #00a4ef; font-size: 1.3rem; }
-        .vendor-title .fa-aws { color: #ff9900; font-size: 1.3rem; }
-        .vendor-title .fa-google { color: #4285f4; font-size: 1.3rem; }
-        .vendor-title .fa-redhat { color: #ee0000; font-size: 1.3rem; }
-
-        .cert-card {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .cert-card:hover {
+        /* --- Individual Project/Research Entry Styling (Redesigned) --- */
+        .entry-card {
             background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.2rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: row; /* Aligns image and text side-by-side */
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: all 0.3s ease;
         }
 
-        .cert-info {
+        .entry-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .entry-image {
+            width: 160px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+            background: #1e293b;
+        }
+
+        .entry-content {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.6rem;
+            flex: 1;
         }
 
-        .cert-name {
+        .entry-title {
             font-size: 1.05rem;
-            color: #f8fafc;
-            font-weight: 600;
+            font-weight: 700;
+            color: #e2e8f0;
             line-height: 1.4;
         }
 
-        .cert-meta-row {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .cert-year {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .cert-link {
-            color: #38bdf8;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: color 0.2s ease;
-        }
-
-        .cert-link:hover {
-            color: #7dd3fc;
-            text-decoration: underline;
-        }
-
-        .badge {
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border: 1px solid transparent;
-            white-space: nowrap;
-        }
-
-        .badge.completed {
-            background: rgba(74, 222, 128, 0.15);
-            color: #4ade80;
-            border-color: rgba(74, 222, 128, 0.4);
-            box-shadow: 0 0 10px rgba(74, 222, 128, 0.1);
-        }
-
-        .badge.ongoing {
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
             background: rgba(250, 204, 21, 0.15);
             color: #facc15;
-            border-color: rgba(250, 204, 21, 0.4);
-            box-shadow: 0 0 10px rgba(250, 204, 21, 0.1);
+            border: 1px solid rgba(250, 204, 21, 0.3);
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-left: 8px;
+            vertical-align: middle;
         }
 
-        .empty-state {
-            color: #64748b;
-            font-style: italic;
-            font-size: 0.95rem;
-            text-align: center;
-            padding: 2rem !important;
-            background: transparent !important;
-            border: 1px dashed rgba(255, 255, 255, 0.1) !important;
-            display: block;
+        .entry-desc {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Technology Chips */
+        .tech-chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 0.3rem;
+        }
+
+        .tech-chip {
+            padding: 4px 10px;
+            background: rgba(74, 222, 128, 0.1);
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Achievements List */
+        .achievement-list {
+            list-style: none;
+            padding-top: 0.8rem;
+            margin-top: 0.2rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .achievement-list li {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .achievement-list li i.fa-medal { color: #facc15; margin-top: 3px; }
+        .achievement-list li i.fa-star { color: #a78bfa; margin-top: 3px; }
+        .achievement-list li i.fa-certificate { color: #38bdf8; margin-top: 3px; }
+
+        /* Action Buttons */
+        .entry-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: #1e293b;
+            color: #f8fafc;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid #334155;
+            transition: all 0.2s ease;
+        }
+
+        .github-btn:hover {
+            background: #f8fafc;
+            color: #0f172a;
+            border-color: #f8fafc;
+            transform: scale(1.05);
         }
 
         @media (max-width: 1024px) {
             header { justify-content: center; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); }
             nav { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
-            .cert-card { flex-direction: column; align-items: flex-start; }
-            .badge { align-self: flex-start; }
+            .projects-layout { grid-template-columns: 1fr; }
+            .metrics-dashboard { flex-direction: column; gap: 1rem; align-items: center; }
+            .metric-card { width: 100%; max-width: 300px; }
+            
+            /* Responsive Cards */
+            .entry-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .entry-image {
+                width: 100%;
+                height: auto;
+                max-height: 200px;
+            }
+            .tech-chip-container, .entry-actions, .achievement-list li {
+                justify-content: center;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -315,158 +419,349 @@
             <a href="index.html" class="nav-link">About Me</a>
             <a href="education.html" class="nav-link">Education</a>
             <a href="experience.html" class="nav-link">Experience</a>
-            <a href="certificates.html" class="nav-link active">Professional Certificates</a>
-            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="certificates.html" class="nav-link">Professional Certificates</a>
+            <a href="projects.html" class="nav-link active">Projects</a>
             <a href="learning.html" class="nav-link">Online Learning</a>
         </nav>
     </header>
 
     <div class="page-container">
-        <h1 class="section-title">Professional Certificates</h1>
-        <p class="section-subtitle">A showcase of my verified industry credentials and continuous learning path.</p>
+        <h1 class="section-title">Projects & Research</h1>
+        <p class="section-subtitle">A showcase of my academic research, technical builds, and engineering solutions.</p>
 
-        <div class="accordion-container">
+        <!-- Metrics Dashboard -->
+        <div class="metrics-dashboard">
+            <div class="metric-card">
+                <h3><span id="research-counter">0</span></h3>
+                <p>Research</p>
+            </div>
+            <div class="metric-card">
+                <h3><span id="project-counter">0</span></h3>
+                <p>Completed Projects</p>
+            </div>
+        </div>
 
-            <!-- 1. CLOUD TAB -->
-            <div class="acc-item open"> <!-- Default open -->
-                <button class="acc-header">
-                    <div class="header-title-wrap">
-                        <i class="fa-solid fa-cloud"></i> Cloud Architecture & Services
-                    </div>
-                    <i class="fa-solid fa-chevron-down chevron"></i>
-                </button>
-                <div class="acc-content-wrapper">
-                    <div class="acc-content-inner">
-                        <div class="acc-content-padding">
-                            
-                            <!-- Azure Section -->
-                            <div class="vendor-section">
-                                <h4 class="vendor-title"><i class="fa-brands fa-microsoft"></i> Microsoft Azure</h4>
-                                <div class="cert-card">
-                                    <div class="cert-info">
-                                        <div class="cert-name">AZ-900: Microsoft Azure Fundamentals</div>
-                                        <div class="cert-meta-row">
-                                            <div class="cert-year"><i class="fa-regular fa-calendar"></i> 2026</div>
-                                            <!-- Credential URL Link for completed certificates -->
-                                            <a href="https://learn.microsoft.com/api/credentials/share/en-us/VYTHURSHMOHANARAJAH-9851/F034C60EF7057A4?sharingId" target="_blank" class="cert-link">
-                                                <i class="fa-solid fa-external-link-alt"></i> Verify Credential
-                                            </a>
+        <!-- 2-Column Layout -->
+        <div class="projects-layout">
+            
+            <!-- COLUMN 1: RESEARCH -->
+            <div class="column">
+                <h2 class="column-header"><i class="fa-solid fa-microscope"></i> Research</h2>
+                
+                <div class="accordion-container">
+                    
+                    <!-- MSc Research -->
+                    <div class="acc-item open"> <!-- Default open to show layout -->
+                        <button class="acc-header">
+                            <div class="header-title-wrap">
+                                <i class="fa-solid fa-book-open cat-research"></i> MSc Research
+                                <span class="status-badge">Ongoing</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-down chevron"></i>
+                        </button>
+                        <div class="acc-content-wrapper">
+                            <div class="acc-content-inner">
+                                <div class="acc-content-padding">
+                                    <div class="entry-card research-entry">
+                                        <img src="MSc_Research.png" alt="MSc Research" class="entry-image">
+                                        <div class="entry-content">
+                                            <div class="entry-title">
+                                                Multi-lingual Bidirectional Sign Language Translation System for Real-Time Communication Between Hearing and Hearing-Impaired Communities in Sri Lanka
+
+                                                
+                                            </div>
+                                            <div class="entry-desc">
+
+The communication barrier between hearing-impaired individuals and the general public remains a critical challenge in Sri Lanka, severely impacting access to essential services such as education, healthcare, and employment. Existing assistive technologies are largely inadequate for this context, as they typically support only one-way translation, recognize isolated gestures rather than continuous signing, and fail to accommodate Sri Lanka's complex multilingual landscape of Sinhala, Tamil, and English. To bridge this gap, this study proposes an AI-driven, bidirectional sign language translation framework tailored specifically for Sri Lankan Sign Language (SLSL). The system integrates computer vision and deep learning models to accurately track and interpret continuous sign gestures, alongside natural language processing (NLP) and speech processing technologies to manage language translation. Designed to handle multiple input modalities, the platform accepts sign language, voice commands, and typed text, instantly generating the corresponding output via visual sign language, synthesized audio, or written text across all three local languages. By providing real-time, two-way translation in diverse environments, this research aims to foster greater social inclusion and equal communication opportunities for the deaf and hard-of-hearing community. Ultimately, the outcomes of this study will provide a robust technical foundation for future advancements in multilingual assistive technologies.
+Keywords: Sign Language Translation, Sri Lankan Sign Language (SLSL), Bidirectional Communication, Multilingual Processing, Assistive Technology, Deep Learning.
+
+                                            </div>
+                                            <!-- Technologies -->
+                                            <div class="tech-chip-container">
+                                                <span class="tech-chip">Artificial Intelligence</span>
+                                                <span class="tech-chip">Computer Vision</span>
+                                                <span class="tech-chip">Natural Language Processing</span>
+                                                <span class="tech-chip">Machine Learning</span>
+                                                <span class="tech-chip">Python</span>
+                                            </div>
+                                            <!-- Actions -->
+                                            <div class="entry-actions">
+                                                <a href="#" class="github-btn"><i class="fa-brands fa-github"></i> View Repository</a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <span class="badge completed">Completed</span>
                                 </div>
                             </div>
-
-                            <!-- AWS Section -->
-                            <div class="vendor-section">
-                                <h4 class="vendor-title"><i class="fa-brands fa-aws"></i> Amazon Web Services (AWS)</h4>
-                                
-                                <div class="cert-card">
-                                    <div class="cert-info">
-                                        <div class="cert-name">AWS Certified Cloud Practitioner (CLF-C02)</div>
-                                        <div class="cert-year">Target: 2026</div>
-                                    </div>
-                                    <span class="badge ongoing">Ongoing</span>
-                                </div>
-                                
-                                <div class="cert-card">
-                                    <div class="cert-info">
-                                        <div class="cert-name">AWS Certified AI Practitioner (AIF-C01)</div>
-                                        <div class="cert-year">Target: 2026</div>
-                                    </div>
-                                    <span class="badge ongoing">Ongoing</span>
-                                </div>
-                                
-                                <div class="cert-card">
-                                    <div class="cert-info">
-                                        <div class="cert-name">AWS Certified CloudOps Engineer – Associate (SOA-C03)</div>
-                                        <div class="cert-year">Target: 2026</div>
-                                    </div>
-                                    <span class="badge ongoing">Ongoing</span>
-                                </div>
-                            </div>
-
-                            <!-- Google Section -->
-                            <div class="vendor-section">
-                                <h4 class="vendor-title"><i class="fa-brands fa-google"></i> Google Cloud Platform (GCP)</h4>
-                                <div class="cert-card empty-state">
-                                    <i class="fa-solid fa-hourglass-half"></i> Future roadmap planned
-                                </div>
-                            </div>
-
                         </div>
                     </div>
+
+                    <!-- BSc Research -->
+                    <div class="acc-item">
+                        <button class="acc-header">
+                            <div class="header-title-wrap">
+                                <i class="fa-solid fa-book-open cat-research"></i> BSc Research
+                            </div>
+                            <i class="fa-solid fa-chevron-down chevron"></i>
+                        </button>
+                        <div class="acc-content-wrapper">
+                            <div class="acc-content-inner">
+                                <div class="acc-content-padding">
+                                    <div class="entry-card research-entry">
+                                        <img src="https://placehold.co/400x300/1e293b/38bdf8?text=Voice+to+Sign+Language" alt="BSc Research" class="entry-image">
+                                        <div class="entry-content">
+                                            <div class="entry-title">Voice to Sign Language with Real-Time Speech Recognition</div>
+                                            <div class="entry-desc">
+                                                A sophisticated system designed to convert spoken voice into American Sign Language (ASL) in real-time, bridging communication gaps seamlessly.
+                                            </div>
+                                            <!-- Technologies -->
+                                            <div class="tech-chip-container">
+                                                <span class="tech-chip">Speech Recognition</span>
+                                                <span class="tech-chip">Real-Time Processing</span>
+                                                <span class="tech-chip">Translation Algorithms</span>
+                                            </div>
+                                            <!-- Achievements -->
+                                            <ul class="achievement-list">
+                                                <li><i class="fa-solid fa-medal"></i> <strong>Gold Medal Award</strong> - World Invention and Technology Expo (WINTEX 2022)</li>
+                                                <li><i class="fa-solid fa-star"></i> <strong>Special Award</strong> - Malaysian Research and Innovation Society (MyRIS)</li>
+                                                <li><i class="fa-solid fa-certificate"></i> Participant - International Research Conference (IRC 2022)</li>
+                                            </ul>
+                                            <!-- Actions -->
+                                            <div class="entry-actions">
+                                                <a href="#" class="github-btn"><i class="fa-brands fa-github"></i> View Repository</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- 2. OPERATING SYSTEMS TAB -->
-            <div class="acc-item">
-                <button class="acc-header">
-                    <div class="header-title-wrap">
-                        <i class="fa-solid fa-server"></i> Operating Systems
-                    </div>
-                    <i class="fa-solid fa-chevron-down chevron"></i>
-                </button>
-                <div class="acc-content-wrapper">
-                    <div class="acc-content-inner">
-                        <div class="acc-content-padding">
-                            
-                            <!-- Red Hat Section -->
-                            <div class="vendor-section">
-                                <h4 class="vendor-title"><i class="fa-brands fa-redhat"></i> Red Hat</h4>
-                                <div class="cert-card">
-                                    <div class="cert-info">
-                                        <div class="cert-name">Red Hat Certified System Administrator (EX200)</div>
-                                        <div class="cert-year">Target: 2026</div>
+            <!-- COLUMN 2: PROJECTS -->
+            <div class="column">
+                <h2 class="column-header"><i class="fa-solid fa-laptop-code"></i> Projects</h2>
+                
+                <div class="accordion-container">
+                    
+                    <!-- DevOps Category -->
+                    <div class="acc-item open"> 
+                        <button class="acc-header">
+                            <div class="header-title-wrap">
+                                <i class="fa-solid fa-infinity cat-devops"></i> DevOps
+                            </div>
+                            <i class="fa-solid fa-chevron-down chevron"></i>
+                        </button>
+                        <div class="acc-content-wrapper">
+                            <div class="acc-content-inner">
+                                <div class="acc-content-padding">
+                                    
+                                    <div class="entry-card project-entry">
+                                        <img src="https://placehold.co/400x300/1e293b/f472b6?text=CI/CD+Pipeline" alt="DevOps Pipeline" class="entry-image">
+                                        <div class="entry-content">
+                                            <div class="entry-title">Automated CI/CD Pipeline Architecture</div>
+                                            <div class="entry-desc">A complete pipeline project integrating source control, containerization, automated building, and API testing to streamline development workflows.</div>
+                                            <div class="tech-chip-container">
+                                                <span class="tech-chip">Git</span>
+                                                <span class="tech-chip">Docker</span>
+                                                <span class="tech-chip">Jenkins</span>
+                                                <span class="tech-chip">Postman</span>
+                                            </div>
+                                            <div class="entry-actions">
+                                                <a href="#" class="github-btn"><i class="fa-brands fa-github"></i> View Repository</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span class="badge ongoing">Ongoing</span>
+
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- 3. DEVOPS TAB -->
-            <div class="acc-item">
-                <button class="acc-header">
-                    <div class="header-title-wrap">
-                        <i class="fa-solid fa-infinity"></i> DevOps Engineering
-                    </div>
-                    <i class="fa-solid fa-chevron-down chevron"></i>
-                </button>
-                <div class="acc-content-wrapper">
-                    <div class="acc-content-inner">
-                        <div class="acc-content-padding">
-                            
-                            <!-- Placeholder Section -->
-                            <div class="vendor-section">
-                                <div class="cert-card empty-state">
-                                    <i class="fa-solid fa-code-branch" style="font-size: 1.5rem; margin-bottom: 10px; display: block; color: #475569;"></i>
-                                    Certifications currently in the pipeline...
+                    <!-- Software Category -->
+                    <div class="acc-item">
+                        <button class="acc-header">
+                            <div class="header-title-wrap">
+                                <i class="fa-solid fa-code cat-software"></i> Software
+                            </div>
+                            <i class="fa-solid fa-chevron-down chevron"></i>
+                        </button>
+                        <div class="acc-content-wrapper">
+                            <div class="acc-content-inner">
+                                <div class="acc-content-padding">
+                                    
+                                    <div class="entry-card project-entry">
+                                        <img src="https://placehold.co/400x300/1e293b/4ade80?text=Library+System" alt="Library System" class="entry-image">
+                                        <div class="entry-content">
+                                            <div class="entry-title">Library Management System</div>
+                                            <div class="entry-desc">A comprehensive terminal-based management system to track inventory, checkouts, and user data efficiently.</div>
+                                            <div class="tech-chip-container">
+                                                <span class="tech-chip">C Programming</span>
+                                                <span class="tech-chip">Data Structures</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="entry-card project-entry">
+                                        <img src="https://placehold.co/400x300/1e293b/4ade80?text=Flight+Reservation" alt="Flight System" class="entry-image">
+                                        <div class="entry-content">
+                                            <div class="entry-title">Flight Reservation System</div>
+                                            <div class="entry-desc">An object-oriented Java application designed to handle flight scheduling, user bookings, and seat management.</div>
+                                            <div class="tech-chip-container">
+                                                <span class="tech-chip">Java</span>
+                                                <span class="tech-chip">OOP</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="entry-card project-entry">
+                                        <img src="https://placehold.co/400x300/1e293b/4ade80?text=Hostel+Management" alt="Hostel Management" class="entry-image">
+                                        <div class="entry-content">
+                                            <div class="entry-title">Hostel Management System</div>
+                                            <div class="entry-desc">A desktop application to track room allocations, student records, and facility management tasks.</div>
+                                            <div class="tech-chip-container">
+                                                <span class="tech-chip">C#</span>
+                                                <span class="tech-chip">.NET</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
                         </div>
                     </div>
+
+                    <!-- Gaming Category -->
+                    <div class="acc-item">
+                        <button class="acc-header">
+                            <div class="header-title-wrap">
+                                <i class="fa-solid fa-gamepad cat-gaming"></i> Gaming
+                            </div>
+                            <i class="fa-solid fa-chevron-down chevron"></i>
+                        </button>
+                        <div class="acc-content-wrapper">
+                            <div class="acc-content-inner">
+                                <div class="acc-content-padding">
+                                    <div class="entry-card project-entry">
+                                        <img src="https://placehold.co/400x300/1e293b/c084fc?text=Highway+Harvest" alt="Highway Harvest Game" class="entry-image">
+                                        <div class="entry-content">
+                                            <div class="entry-title">Highway Harvest</div>
+                                            <div class="entry-desc">An immersive game development project utilizing modern physics engines and rendering pipelines for an interactive player experience.</div>
+                                            <div class="tech-chip-container">
+                                                <span class="tech-chip">Game Development</span>
+                                                <span class="tech-chip">Physics Simulation</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IoT Category -->
+                    <div class="acc-item">
+                        <button class="acc-header">
+                            <div class="header-title-wrap">
+                                <i class="fa-solid fa-network-wired cat-iot"></i> Internet of Things (IoT)
+                            </div>
+                            <i class="fa-solid fa-chevron-down chevron"></i>
+                        </button>
+                        <div class="acc-content-wrapper">
+                            <div class="acc-content-inner">
+                                <div class="acc-content-padding">
+                                    
+                                    <div class="entry-card project-entry">
+                                        <img src="https://placehold.co/400x300/1e293b/facc15?text=Smart+Transit+Hub" alt="Smart Transit" class="entry-image">
+                                        <div class="entry-content">
+                                            <div class="entry-title">Bilingual Smart Transit Hub</div>
+                                            <div class="entry-desc">An IoT-based automated infrastructure project designed to provide real-time, bilingual transit updates using sensor networks.</div>
+                                            <div class="tech-chip-container">
+                                                <span class="tech-chip">IoT Architecture</span>
+                                                <span class="tech-chip">Sensors</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="entry-card project-entry">
+                                        <img src="https://placehold.co/400x300/1e293b/facc15?text=Smart+Pet-Feeder" alt="Smart Pet Feeder" class="entry-image">
+                                        <div class="entry-content">
+                                            <div class="entry-title">IoT Based Smart Pet-Feeder & Walking Cat Robot</div>
+                                            <div class="entry-desc">Embedded robotics projects leveraging microcontrollers and IoT connectivity for automated mechanics and remote operation.</div>
+                                            <div class="tech-chip-container">
+                                                <span class="tech-chip">Microcontrollers</span>
+                                                <span class="tech-chip">Robotics</span>
+                                                <span class="tech-chip">IoT</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Others Category -->
+                    <div class="acc-item">
+                        <button class="acc-header">
+                            <div class="header-title-wrap">
+                                <i class="fa-solid fa-layer-group cat-other"></i> Others
+                            </div>
+                            <i class="fa-solid fa-chevron-down chevron"></i>
+                        </button>
+                        <div class="acc-content-wrapper">
+                            <div class="acc-content-inner">
+                                <div class="acc-content-padding">
+                                    
+                                    <div class="entry-card project-entry">
+                                        <img src="https://placehold.co/400x300/1e293b/94a3b8?text=Telecom+Analytics" alt="Telecom Analytics" class="entry-image">
+                                        <div class="entry-content">
+                                            <div class="entry-title">Predictive & Prescriptive Analytics in Telecommunications</div>
+                                            <div class="entry-desc">Data analysis model applied to the Sri Lankan Telecommunications sector to forecast trends and prescribe infrastructure optimization.</div>
+                                            <div class="tech-chip-container">
+                                                <span class="tech-chip">Data Analytics</span>
+                                                <span class="tech-chip">Big Data</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="entry-card project-entry">
+                                        <img src="https://placehold.co/400x300/1e293b/94a3b8?text=Cybersecurity+Risk" alt="Cyber Risk" class="entry-image">
+                                        <div class="entry-content">
+                                            <div class="entry-title">Cybersecurity Risk Assessment for Smart ITM Ecosystems</div>
+                                            <div class="entry-desc">Developed a comprehensive risk assessment and management strategy for Interactive Teller Machines to secure banking infrastructure.</div>
+                                            <div class="tech-chip-container">
+                                                <span class="tech-chip">Cybersecurity</span>
+                                                <span class="tech-chip">Risk Management</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- JavaScript to handle Accordion Interactions -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- ACCORDION LOGIC ---
             const mainHeaders = document.querySelectorAll('.acc-header');
             
             mainHeaders.forEach(header => {
                 header.addEventListener('click', () => {
                     const parentItem = header.parentElement;
-                    const currentlyOpen = document.querySelector('.acc-item.open');
+                    const accordionContainer = parentItem.parentElement;
+                    
+                    // Find if any other item IN THE SAME COLUMN is open, and close it
+                    const currentlyOpen = accordionContainer.querySelector('.acc-item.open');
 
-                    // If another main item is open, close it
                     if (currentlyOpen && currentlyOpen !== parentItem) {
                         currentlyOpen.classList.remove('open');
                     }
@@ -475,6 +770,43 @@
                     parentItem.classList.toggle('open');
                 });
             });
+
+            // --- DYNAMIC METRICS COUNTER LOGIC ---
+            // Automatically count elements with specific classes and update the dashboard
+            
+            function updateMetrics() {
+                // Count all divs with the class 'research-entry'
+                const researchCount = document.querySelectorAll('.research-entry').length;
+                // Count all divs with the class 'project-entry'
+                const projectCount = document.querySelectorAll('.project-entry').length;
+
+                // Animate numbers counting up (Optional UI enhancement)
+                animateValue("research-counter", 0, researchCount, 1000);
+                animateValue("project-counter", 0, projectCount, 1000);
+            }
+
+            // Number animation function
+            function animateValue(id, start, end, duration) {
+                if (start === end) {
+                    document.getElementById(id).innerHTML = end;
+                    return;
+                }
+                let range = end - start;
+                let current = start;
+                let increment = end > start ? 1 : -1;
+                let stepTime = Math.abs(Math.floor(duration / range));
+                let obj = document.getElementById(id);
+                let timer = setInterval(function() {
+                    current += increment;
+                    obj.innerHTML = current;
+                    if (current === end) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }
+
+            // Run the counter when the page loads
+            updateMetrics();
         });
     </script>
 </body>
